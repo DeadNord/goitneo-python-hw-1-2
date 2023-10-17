@@ -3,29 +3,31 @@ from datetime import datetime
 from operator import itemgetter
 
 
-
-
 def get_birthdays_per_week(users):
     list = {}
-    users = sorted(users, key=itemgetter('birthday'))
+    users = sorted(users, key=itemgetter("birthday"))
+
     def addUser(user):
         weekday = calendar.day_name[user["birthday"].weekday()]
-        if (weekday == 'Saturday' or weekday == 'Sunday'):
-            weekday = 'Monday'
-        if(bool(list.get(weekday))):
+        if weekday == "Saturday" or weekday == "Sunday":
+            weekday = "Monday"
+        if weekday in list:
             list[weekday] += [user["name"]]
         else:
             list[weekday] = [user["name"]]
+
     current_date = datetime.now().date()
     for user in users:
         birthday = user["birthday"].date()
         birthday_this_year = birthday.replace(year=current_date.year)
-        if(birthday_this_year < current_date):
-            birthday_this_year = birthday.replace(year=current_date.year+1)
+        if birthday_this_year < current_date:
+            birthday_this_year = birthday.replace(year=current_date.year + 1)
             # Для чего этот участок кода? Какова его цель?
         else:
             delta_days = (birthday_this_year - current_date).days
-            if delta_days < 5: # Хотя в условие сказанно, delta_days < 7, но на мой взгляд реализация этой задачи требует иное значение.
+            if (
+                delta_days < 5
+            ):  # Хотя в условие сказанно, delta_days < 7, но на мой взгляд реализация этой задачи требует иное значение.
                 addUser(user)
     res = []
     for i in list:

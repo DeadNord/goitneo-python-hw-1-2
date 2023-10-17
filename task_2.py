@@ -16,7 +16,7 @@ def add_contact(args, contacts):
 def change_contact(args, contacts):
     try:
         name, phone = args
-        if bool(contacts.get(name)):
+        if name in contacts:
             contacts[name] = phone
             return "Contact changed."
         else:
@@ -27,7 +27,7 @@ def change_contact(args, contacts):
 
 def phone_contact(username, contacts):
     try:
-        if bool(contacts.get(username)):
+        if username in contacts:
             return f"Phone of {username}: {contacts[username]}"
         else:
             return "Contact not found"

@@ -38,7 +38,6 @@ def get_birthdays_per_week(users):
 
 
 # Данные, что я использовал для тестирвания.
-
 # test_data = [
 #     {"name": "Bill Gates", "birthday": datetime(1955, 6, 24)},
 #     {"name": "Paul Gates", "birthday": datetime(1956, 6, 24)},
@@ -53,6 +52,8 @@ def get_birthdays_per_week(users):
 #     {"name": "Bill Brigau", "birthday": datetime(1995, 10, 21)},
 #     {"name": "Bob Brigau", "birthday": datetime(1995, 10, 21)},
 #     {"name": "Braun Brigau", "birthday": datetime(1995, 10, 22)},
-#     {"name": "Bei Brigau", "birthday": datetime(1995, 10, 23)}
-#              ]
-# get_birthdays_per_week(test_data)
+#     {"name": "Bei Brigau", "birthday": datetime(1995, 10, 23)},
+# ]
+
+if __name__ == "__main__":
+    get_birthdays_per_week()
